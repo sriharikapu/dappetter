@@ -2,6 +2,13 @@
 
 E2E testing for dApps using Puppeteer + MetaMask
 
+## V 9.0.4 Upgrade 
+```
+$ npm install -s dappeteer
+```
+Incase if your dappeteer doesnt work with `MetaMask v7.7.1` you can copy this repository files into to your `node_modules/dappeteer` directory
+Thats an easy fix for a messy problem untill the PR on the dAppeteer is finalized
+
 ## Installation
 
 ```
