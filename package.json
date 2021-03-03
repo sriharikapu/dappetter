@@ -1,5 +1,5 @@
 {
-  "name": "dappeteer",
+  "name": "@sriharikapu/dappeteer",
   "version": "2.0.0",
   "description": "E2E testing for dApps using Puppeteer + MetaMask",
   "main": "dist/index.js",
@@ -26,7 +26,7 @@
     "dapp",
     "ethereum"
   ],
-  "author": "Srihari Kapu <sri@sriharikapu.com>"
+  "author": "Decenterland"
   "license": "MIT",
   "devDependencies": {
     "@types/mocha": "^8.2.0",
