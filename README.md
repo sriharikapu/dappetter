@@ -2,13 +2,6 @@
 
 E2E testing for dApps using Puppeteer + MetaMask
 
-## V 9.0.4 Upgrade 
-```
-$ npm install -s dappeteer
-```
-Incase if your dappeteer doesnt work with `MetaMask v7.7.1` you can copy this repository files into to your `node_modules/dappeteer` directory
-Thats an easy fix for a messy problem untill the PR on the dAppeteer is finalized
-
 ## Installation
 
 ```
@@ -75,4 +68,4 @@ main()
 
   - `metamask.sign()`: commands MetaMask to sign a message. For this to work MetaMask must be in a sign confirmation state.
   
-  - `metamask.approve()`: enables the app to connect to MetaMask account in privacy mode
+  - `metamask.approve({ allAccounts })`: confirm Dapp permissions to use Metamask account. If you plan to use the Dapp with multiple accounts you can use `allAccounts` to add permission to all imported accounts. By default is false
