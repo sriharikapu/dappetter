@@ -4,6 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": ["es2017", "dom"],
+    "types": ["node"],
     "declaration": true,
     "outDir": "dist"
   },
