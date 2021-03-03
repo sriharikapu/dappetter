@@ -19,10 +19,6 @@ jobs:
                   registry-url: https://registry.npmjs.org
             - name: yarn install
               run: yarn install
-            - name: tsc
-              uses: icrawl/action-tsc@v1
-            - name: TSC actions
-              uses: stepek/tsc-action@1.0.0
             - name: 🚀 publish
               run: npm publish --access public
               working-directory: dappetter
