@@ -4,13 +4,14 @@ on:
     release:
         types: [published]
 
+
 jobs:
     release:
         name: 🚀 release
         runs-on: ubuntu-latest
         steps:
             - name: 📚 checkout
-              uses: actions/checkout@v2.1.1
+              uses: actions/checkout@v2.3.4
             - name: 🟢 node
               uses: actions/setup-node@v1.4.2
               with:
