@@ -6,6 +6,7 @@
     "lib": ["es2017", "dom"],
     "declaration": true,
     "outDir": "dist",
+    "typeRoots": ["node_modules/@types", "src/typings"],
     "skipLibCheck": true
 }
   },
