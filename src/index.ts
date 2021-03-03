@@ -24,12 +24,16 @@ export type Dappeteer = {
   switchNetwork: (network: string) => Promise<void>
   confirmTransaction: (options: TransactionOptions) => Promise<void>
   sign: () => Promise<void>
-  approve: () => Promise<void>
+  approve: (options: ApproveOptions) => Promise<void>
 }
 
 export type TransactionOptions = {
   gas: number
   gasLimit: number
+}
+
+export type ApproveOptions = {
+  allAccounts?: boolean
 }
 
 export async function launch(puppeteer, options: LaunchOptions = {}): Promise<puppeteer.Browser> {
@@ -214,7 +218,7 @@ export async function getMetamask(
       }
       await metamaskPage.reload()
 
-      const confirmButtonSelector = '.request-signature__footer button.btn-secondary'
+      const confirmButtonSelector = '.signature-request-footer button.button.btn-primary'
 
       const button = await metamaskPage.waitForSelector(confirmButtonSelector)
       await button.click()
@@ -222,8 +226,33 @@ export async function getMetamask(
       await waitForUnlockedScreen(metamaskPage)
     },
 
-    approve: async () => {
+    approve: async ({ allAccounts = false }) => {
       await metamaskPage.bringToFront()
+      if (!signedIn) {
+        throw new Error("You haven't signed in yet")
+      }
+      await metamaskPage.reload()
+
+      // If we want to approve all imported accounts to be used with our Dapp and avoid
+      // difficulties connecting while switching accounts
+      if (allAccounts) {
+        const accountListElementsSelector =
+          '.permissions-connect-choose-account__account'
+        
+        // We wait until the list is loaded and we check that it has more than 1 element
+        await metamaskPage.waitForSelector(accountListElementsSelector)
+        const accountListElements = await metamaskPage.$$(accountListElementsSelector)
+
+        // Try to click input only if there is more than one account. It won't be present with one
+        // account or less
+        if (accountListElements.length > 1) {
+          const selectAllCheckboxSelector =
+            '.permissions-connect-choose-account__select-all input'
+            
+          const allAccountsCheckbox = await metamaskPage.waitForSelector(selectAllCheckboxSelector)
+          await allAccountsCheckbox.click()
+        }        
+      }
 
       const confirmButtonSelector =
         '.permissions-connect-choose-account__bottom-buttons button.button.btn-primary'
