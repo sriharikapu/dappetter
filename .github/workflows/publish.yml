@@ -13,13 +13,13 @@ jobs:
         steps:
             - name: 📚 checkout
               uses: actions/checkout@v2.3.4
-            - name: TSC actions
-              uses: stepek/tsc-action@1.0.0
             - name: 🟢 node
               uses: actions/setup-node@v2
               with:
                   node-version: 14
                   registry-url: https://registry.npmjs.org
+            - name: TSC actions
+              uses: stepek/tsc-action@1.0.0
             - name: 🚀 publish
               run: npm publish --access public
               working-directory: dappetter
