@@ -19,6 +19,8 @@ jobs:
                   registry-url: https://registry.npmjs.org
             - name: yarn install
               run: yarn install
+            - name: ✨ yarn build
+              run: yarn run build
             - name: 🚀 publish
               run: npm publish --access public
               working-directory: dappetter
