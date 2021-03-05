@@ -1,4 +1,4 @@
-name: "🚀 publish"
+name: "🚀 launch"
 
 on:
     push:
@@ -7,20 +7,10 @@ on:
 
 jobs:
     release:
-        name: 🚀 publish
+        name: 🚀 run
         runs-on: ubuntu-latest
         steps:
             - name: 📚 checkout
               uses: actions/checkout@v2.3.4
-            - name: 🟢 node
-              uses: actions/setup-node@v2
-              with:
-                  node-version: 14
-                  registry-url: https://registry.npmjs.org
-            - name: npm install
-              run: npm i 
-            - name: 🚀 publish
-              run: npm publish --access public
-              working-directory: dappetter
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+            
+            
