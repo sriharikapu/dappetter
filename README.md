@@ -1,5 +1,6 @@
 # dAppetter
 
+[![🚀 launch](https://github.com/sriharikapu/dappetter/actions/workflows/publish.yml/badge.svg)](https://github.com/sriharikapu/dappetter/actions/workflows/publish.yml)
 
 E2E testing for dApps using Puppeteer + MetaMask
 
