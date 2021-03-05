@@ -17,6 +17,8 @@ jobs:
               with:
                   node-version: 14
                   registry-url: https://registry.npmjs.org
+            - name: yarn clean
+              run: yarn cache clean --force
             - name: yarn install
               run: yarn install
             - name: ✨ yarn build
