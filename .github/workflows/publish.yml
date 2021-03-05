@@ -19,8 +19,6 @@ jobs:
                   registry-url: https://registry.npmjs.org
             - name: npm clean
               run: npm cache clean --force
-            - name: npm install
-              run: npm install 
             - name: ✨ npm build
               run: npm run build-tsc
             - name: 🚀 publish
