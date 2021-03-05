@@ -17,12 +17,12 @@ jobs:
               with:
                   node-version: 14
                   registry-url: https://registry.npmjs.org
-            - name: yarn clean
-              run: yarn cache clean --force
-            - name: yarn install
-              run: yarn install
-            - name: ✨ yarn build
-              run: yarn run build
+            - name: npm clean
+              run: npm cache clean --force
+            - name: npm install
+              run: npm install 
+            - name: ✨ npm build
+              run: npm run build
             - name: 🚀 publish
               run: npm publish --access public
               working-directory: dappetter
