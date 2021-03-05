@@ -20,7 +20,7 @@ jobs:
             - name: npm clean
               run: npm cache clean --force
             - name: ✨ npm build
-              run: npm run build-tsc
+              run: npm run build
             - name: 🚀 publish
               run: npm publish --access public
               working-directory: dappetter
