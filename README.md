@@ -1,6 +1,4 @@
-# dAppeteer
-
-[![🚀](https://github.com/sriharikapu/dappetter/actions/workflows/publish.yml/badge.svg?branch=master)](https://github.com/sriharikapu/dappetter/actions/workflows/publish.yml)
+# dAppetter
 
 
 E2E testing for dApps using Puppeteer + MetaMask
@@ -8,18 +6,18 @@ E2E testing for dApps using Puppeteer + MetaMask
 ## Installation
 
 ```
-$ npm install -s dappeteer
+$ npm i @sriharikapu/dappetter
 ```
 
 ## Usage
 
 ```js
 import puppeteer from 'puppeteer'
-import dappeteer from 'dappeteer'
+import dappetter from '@sriharikapu/dappetter'
 
 async function main() {
-  const browser = await dappeteer.launch(puppeteer)
-  const metamask = await dappeteer.getMetamask(browser)
+  const browser = await dappetter.launch(puppeteer)
+  const metamask = await dappetter.getMetamask(browser)
 
   // create or import an account
   // await metamask.createAccount()
@@ -43,13 +41,13 @@ main()
 
 ## API
 
-- `dappeteer.launch(puppeteer[, launchOptions])`: returns an instance of `browser`, same as `puppeteer.launch`, but it also installs the MetaMask extension. It supports all the regular `puppeteer.launch` options as a second argument with the addition of two extra ones:
+- `dappetter.launch(puppeteer[, launchOptions])`: returns an instance of `browser`, same as `puppeteer.launch`, but it also installs the MetaMask extension. It supports all the regular `puppeteer.launch` options as a second argument with the addition of two extra ones:
 
   - `metamaskPath`: Path to the MetaMask extension (by default it uses the one bundled)
 
   - `extensionUrl`: URL of the MetaMask extension, by default it is `chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/popup.html` but if you use a different version you might need to change it use the right extension id.
 
-- `dappeteer.getMetaMask(browser)`: returns a promise that resolves to an object that allows you to interact with MetaMask by using the following methods:
+- `dappetter.getMetaMask(browser)`: returns a promise that resolves to an object that allows you to interact with MetaMask by using the following methods:
 
   - `metamask.createAccount([password])`: it commands MetaMask to create a new account, it resolves when it's done. It can only be used while you haven't signed in yet, otherwise it throws. The password is optional, it defaults to `password1234`.
 
