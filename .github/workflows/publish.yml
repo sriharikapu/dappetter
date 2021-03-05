@@ -17,8 +17,8 @@ jobs:
               with:
                   node-version: 14
                   registry-url: https://registry.npmjs.org
-            - name: npm test
-              run: npm run test 
+            - name: npm install
+              run: npm i 
             - name: 🚀 publish
               run: npm publish --access public
               working-directory: dappetter
