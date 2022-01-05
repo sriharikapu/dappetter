@@ -335,13 +335,19 @@ async function importAccount(metamaskPage: puppeteer.Page, seed: string, passwor
   const doneButton = await metamaskPage.waitForSelector('.end-of-flow button')
   await doneButton.click()
 
-  const closeSwappingButton = await metamaskPage.waitForSelector('.popover-header__button')
-  await closeSwappingButton.click()
+  try {
+    const closeSwappingButton = await metamaskPage.waitForSelector('.popover-header__button', {
+      timeout: 1000,
+    })
+    await closeSwappingButton.click()
 
-  // Ensure popover is closed before continue
-  await metamaskPage.waitForFunction(() => {
-    return document.querySelector('.popover-header__button') == null
-  })
+    // Ensure popover is closed before continue
+    await metamaskPage.waitForFunction(() => {
+      return document.querySelector('.popover-header__button') == null
+    })
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 async function waitForUnlockedScreen(metamaskPage) {
